@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    Tag Listing
+    <ul>
+      <% tags.each do |tag| %>
+        <li><a href="/t/<%= tag.tag %>"><%= tag.tag %> => <%= tag.url %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

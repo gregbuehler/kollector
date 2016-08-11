@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    Tag Stats
+    <% clicks.each do |click| %>
+      <li><%= click.timestamp %> <%= click.ip %> <%= click.fingerprint %> <%= click.referrer %></li>
+    <% end %>
+  </body>
+</html>

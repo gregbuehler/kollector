@@ -1,0 +1,23 @@
+/* submissions.css */
+
+body {
+  background-color: #444;
+}
+
+.content {
+  background-color: #666;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+}
+
+form {
+
+}
+
+#last-tag {
+  height: 100px;
+  width: 100px;
+}
