@@ -1,12 +1,8 @@
-require 'sinatra'
+require 'sinatra/base'
 require 'digest'
 require 'data_mapper'
 require 'json'
 #require 'sinatra/cross_origin'
-
-set :public_folder, Proc.new { File.join(root, "public") }
-set :root_folder, Proc.new { File.join(root) }
-set :cross_origin, true
 
 DataMapper.setup(:default, "sqlite3::memory:")
 DataMapper::Model.raise_on_save_failure = true
@@ -61,32 +57,39 @@ end
 Link.auto_migrate!
 Click.auto_migrate!
 
-get '/' do
-  erb :index
-end
+class Kollector < Sinatra::Base
 
-post '/l' do
-  create_tag(params[:url]).to_json
-end
+  set :public_folder, Proc.new { File.join(root, "public") }
+  set :root_folder, Proc.new { File.join(root) }
+  set :cross_origin, true
 
-get '/l' do
-  tags = Link.all
-  puts "No. of tags", Link.all.length
-  erb :list, :locals => { :tags => tags }
-end
-
-get '/l/:tag' do
-  t = Link.first(:tag => params[:tag])
-  if not t.nil?
-    record_click(t.tag, request.ip, fingerprint(request), request.referrer)
-    redirect(t.url)
-  else
-    puts "couldn't find tag"
+  get '/' do
+    erb :index
   end
 
-end
+  post '/l' do
+    create_tag(params[:url]).to_json
+  end
 
-get '/c/:tag' do
-  clicks = Click.all(:tag => params[:tag])
-  erb :stats, :locals => { :clicks => clicks }
+  get '/l' do
+    tags = Link.all
+    puts "No. of tags", Link.all.length
+    erb :list, :locals => { :tags => tags }
+  end
+
+  get '/l/:tag' do
+    t = Link.first(:tag => params[:tag])
+    if not t.nil?
+      record_click(t.tag, request.ip, fingerprint(request), request.referrer)
+      redirect(t.url)
+    else
+      puts "couldn't find tag"
+    end
+
+  end
+
+  get '/c/:tag' do
+    clicks = Click.all(:tag => params[:tag])
+    erb :stats, :locals => { :clicks => clicks }
+  end
 end
