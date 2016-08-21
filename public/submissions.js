@@ -1,19 +1,26 @@
 $(function() {
     //hang on event of form with id=myform
-    $("#tag-creation").submit(function(e) {
-
-        //prevent Default functionality
+    $("#link-submit").on('click', function(e) {
         e.preventDefault();
 
-        //do your own request an handle the results
+        var target = $("#url").val();
+
         $.ajax({
                 url: '/l',
                 type: 'post',
                 dataType: 'json',
-                data: $("#tag-creation").serialize(),
+                data: { url: target },
                 success: function(data) {
-                    console.log(data);
-                    $("#last-tag").html("<a href='" + data.link +"'>" + data.link + "</a>");
+                    var link = [
+                      '<div>',
+                      '<span class="link-metric-url"><a href="/s/', data.tag, '"><span class="glyphicon glyphicon-signal"></span></a></span>',
+                      '<span class="link-target-url"><a href="/l/', data.tag ,'"><span class="glyphicon glyphicon-tag"></span>', data.link,'</a></span>',
+                      '</div>'
+                    ];
+
+                    $("#url").val("");
+                    $("#link-panel").show(300, 'swing');
+                    $("#links").append(link.join(""));
                 }
         });
 

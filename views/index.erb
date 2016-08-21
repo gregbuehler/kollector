@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="/submissions.css" media="screen">
-    <script src="//code.jquery.com/jquery-3.1.0.min.js" charset="utf-8"></script>
-    <script src="/submissions.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <div class="content">
-      <form id="tag-creation">
-        <input type="text" name="url" id="url" value="">
-        <input type="submit" name="submit" class="button" value="Create Link">
-      </form>
+    <head>
+        <meta charset="utf-8">
+        <title>Kollector</title>
 
-      <p id="last-tag"></p>  
-    </div>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="/submissions.css" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row vertical-center search">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div id="project-name" text-align="center">Kollector</div>
 
-  </body>
+                    <form role="form">
+                        <div class="input-group" id="link-form">
+                            <input type="text" id="url" name="url" class="form-control input-lg">
+                            <span class="input-group-btn">
+                                <button id="link-submit" class="btn btn-default btn-lg" type="submit">
+                                    <span class="glyphicon glyphicon-pushpin"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="panel panel-default" id="link-panel">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Your Links</p>
+                      </div>
+                      <div class="panel-body" id="links">
+                        
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//code.jquery.com/jquery-3.1.0.min.js" charset="utf-8"></script>
+        <script src="/submissions.js" charset="utf-8"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
 </html>

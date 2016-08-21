@@ -1,23 +1,22 @@
-/* submissions.css */
-
 body {
-  background-color: #444;
+  background-color: #607d8b;
 }
 
-.content {
-  background-color: #666;
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+#link-panel {
+  display: none;
+}
+
+#project-name {
   text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 250px;
-}
-
-form {
-
-}
-
-#last-tag {
-  height: 100px;
-  width: 100px;
+  font-size: 10em;
+  font-family: 'Lobster', cursive;
+  color: #FFF;
 }
