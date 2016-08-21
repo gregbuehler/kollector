@@ -13,8 +13,8 @@ $(function() {
                 success: function(data) {
                     var link = [
                       '<div>',
-                      '<span class="link-metric-url"><a href="/s/', data.tag, '"><span class="glyphicon glyphicon-signal"></span></a></span>',
-                      '<span class="link-target-url"><a href="/l/', data.tag ,'"><span class="glyphicon glyphicon-tag"></span>', data.link,'</a></span>',
+                      '<span class="link-metric-url"><a href="/s/', data.tag, '"><span class="glyphicon glyphicon-signal"></span></a> </span>',
+                      '<span class="link-target-url"><a href="/l/', data.tag ,'"><span class="glyphicon glyphicon-tag"></span> ', data.link,'</a></span>',
                       '</div>'
                     ];
 
