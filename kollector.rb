@@ -95,8 +95,9 @@ class Kollector < Sinatra::Base
 
   end
 
-  get '/c/:tag' do
+  get '/s/:tag' do
+    link = Link.first(:tag => params[:tag])
     clicks = Click.all(:tag => params[:tag])
-    erb :stats, :locals => { :clicks => clicks }
+    erb :stats, :locals => { :link => link, :clicks => clicks }
   end
 end

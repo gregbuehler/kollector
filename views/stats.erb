@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    Tag Stats
-    <% clicks.each do |click| %>
-      <li><%= click.timestamp %> <%= click.ip %> <%= click.fingerprint %> <%= click.referrer %></li>
-    <% end %>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <title>Kollector</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="/submissions.css" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row vertical-center search">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div id="project-name" text-align="center">Kollector</div>
+                    <div class="panel panel-default" id="stats-panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><%= link.url %></p>
+                        </div>
+                        <div class="panel-body" id="links">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Source</th>
+                                        <th>fingerprint</th>
+                                        <th>Referrer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% clicks.each do |click| %>
+                                    <tr>
+                                        <td><%= click.timestamp %></td>
+                                        <td><%= click.ip %></td>
+                                        <td><%= click.fingerprint %></td>
+                                        <td><%= click.referrer %></td>
+                                    </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//code.jquery.com/jquery-3.1.0.min.js" charset="utf-8"></script>
+        <script src="/submissions.js" charset="utf-8"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
 </html>
