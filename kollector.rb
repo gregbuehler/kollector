@@ -43,7 +43,7 @@ def record_click(tag, ip, fingerprint, referrer)
 end
 
 def create_tag(url)
-  hash = Digest::MD5.hexdigest("#{DateTime.now.to_s} #{url}").to_s
+  hash = Digest::SHA1.hexdigest("#{DateTime.now.to_s} #{url}").to_s[0..5]
   link = "#{request.scheme.to_s}://#{request.host.to_s}:#{request.port.to_s}/l/#{hash}"
 
   l = Link.new
