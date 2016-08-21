@@ -10,13 +10,17 @@ body {
   align-items: center;
 }
 
-#link-panel {
-  display: none;
-}
-
 #project-name {
   text-align: center;
   font-size: 10em;
   font-family: 'Lobster', cursive;
   color: #FFF;
+}
+
+#link-panel {
+  display: none;
+}
+
+#add-failed {
+  display: none;
 }

@@ -19,8 +19,12 @@ $(function() {
                     ];
 
                     $("#url").val("");
+                    $("#add-failed").hide(100);
                     $("#link-panel").show(300, 'swing');
                     $("#links").append(link.join(""));
+                },
+                error: function() {
+                    $("#add-failed").show(300, 'swing');
                 }
         });
 

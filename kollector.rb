@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'digest'
 require 'data_mapper'
 require 'json'
+require 'uri'
 #require 'sinatra/cross_origin'
 
 DataMapper.setup(:default, "sqlite3::memory:")
@@ -68,7 +69,13 @@ class Kollector < Sinatra::Base
   end
 
   post '/l' do
-    create_tag(params[:url]).to_json
+    begin
+      u = URI.parse(params[:url])
+      if u.scheme === nil; puts "scheme was nil"; raise; end
+      create_tag(params[:url]).to_json
+    rescue
+      status 400
+    end
   end
 
   get '/l' do
