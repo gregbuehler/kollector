@@ -12,9 +12,24 @@ body {
 
 #project-name {
   text-align: center;
+  text-shadow: 2px 2px #3f515a;
   font-size: 10em;
   font-family: 'Lobster', cursive;
   color: #FFF;
+}
+
+#oops {
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Lobster', cursive;
+  color: #FFF;
+}
+
+#home-link {
+  text-align: center;
+  text-shadow: 1px 1px #3f515a;
+  font-size: 1em;
+  color: #FFF
 }
 
 #link-panel {

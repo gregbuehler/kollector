@@ -14,7 +14,7 @@ class Link
     property :id,           Serial
     property :tag,          String
     property :link,         String, :length => 255
-    property :url,          String, :length => 255
+    property :url,          Text
 end
 
 class Click
@@ -80,24 +80,32 @@ class Kollector < Sinatra::Base
 
   get '/l' do
     tags = Link.all
-    puts "No. of tags", Link.all.length
     erb :list, :locals => { :tags => tags }
   end
 
   get '/l/:tag' do
-    t = Link.first(:tag => params[:tag])
-    if not t.nil?
-      record_click(t.tag, request.ip, fingerprint(request), request.referrer)
-      redirect(t.url)
+    link = Link.first(:tag => params[:tag])
+    if not link.nil?
+      record_click(link.tag, request.ip, fingerprint(request), request.referrer)
+      redirect(link.url)
     else
-      puts "couldn't find tag"
+      status 404
     end
 
   end
 
   get '/s/:tag' do
     link = Link.first(:tag => params[:tag])
-    clicks = Click.all(:tag => params[:tag])
-    erb :stats, :locals => { :link => link, :clicks => clicks }
+    if not link.nil?
+      clicks = Click.all(:tag => params[:tag])
+      erb :stats, :locals => { :link => link, :clicks => clicks }
+    else
+      status 404
+    end
+  end
+
+  not_found do
+    status 404
+    erb :oops
   end
 end
